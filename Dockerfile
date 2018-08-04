@@ -11,7 +11,8 @@ RUN yum -y install libX11 libXext libXi libXrender libXtst alsa-lib && \
     curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" \
       "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}.0.${JAVA_VERSION_MINOR}+${JAVA_VERSION_BUILD}/${JAVA_URL_HASH}/serverjre-${JAVA_VERSION_MAJOR}.0.${JAVA_VERSION_MINOR}_linux-x64_bin.tar.gz" | \
         tar zxf - -C /opt/oracle && \
-    ln -s jdk-${JAVA_VERSION_MAJOR}.0.${JAVA_VERSION_MINOR} /opt/oracle/java
+    ln -s jdk-${JAVA_VERSION_MAJOR}.0.${JAVA_VERSION_MINOR} /opt/oracle/java && \
+    yum -y clean all
 
 ENV JAVA_HOME /opt/oracle/java
 ENV PATH ${PATH}:${JAVA_HOME}/bin
